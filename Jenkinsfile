@@ -22,10 +22,12 @@ pipeline {
         stage('Deploy') {
             steps {
                 retry(3) {
+                    sh 'chmod 777 deploy.sh'
                     sh './deploy.sh'
                 }
 
                 timeout(time: 3, unit: 'MINUTES') {
+                    sh 'chmod 777 health-check.sh'
                     sh './health-check.sh'
                 }
             }
