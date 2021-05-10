@@ -10,6 +10,7 @@ pipeline {
                 // sh 'python --version'
                 echo "Database engine is ${DB_ENGINE}"
                 echo "DISABLE_AUTH is ${DISABLE_AUTH}"
+                build 'testEnvironment'
             }
         }
         stage('Test') {
